@@ -1,3 +1,4 @@
+
 /*
 PROGRAMMERS Instructions
 
@@ -11,22 +12,24 @@ We can only feature one awesome programmer at a time.
 Find comments below to help you along.
 */
 
-import React from 'react';
+import React, {useState} from 'react';
 
 // Use this variable ONLY to initialize a slice of state!
 // There is something in the JSX right now breaking this rule...
-export const listOfAwesome = [
+export const listOfAwesome = useState([
   { id: '1', name: 'Ada Lovelace' },
   { id: '2', name: 'Grace Hopper' },
   { id: '3', name: 'Evelyn Boyd Granville' },
   { id: '4', name: 'Mary Kenneth Keller' },
   { id: '5', name: 'Frances Allen' },
   { id: '6', name: 'Carol Shaw' },
-];
+] )
 
 export default function Programmers() {
   // We'll have to use the state hook twice, as we need two slices of state.
   // The programmers list on the one hand, and the id of the featured programmer on the other.
+  const [list, setList] = useState(listOfAwesome.name)
+  const [ide, setIde] = useState(listOfAwesome.id)
 
   const getNameOfFeatured = () => {
     // Leave this for last!
@@ -50,9 +53,9 @@ export default function Programmers() {
           /* Nasty bug! We should map over a slice of state, instead of 'listOfAwesome'.
           We might think: "it works, though!" But if the list of programmers is not state,
           we could never add or edit programmers in the future. The list would be a static thing." */
-          listOfAwesome.map(dev =>
+          list.map(dev =>
             <div className='programmer' key={dev.id}>
-              {dev.name} <button onClick={() => { /* in here set the featured id to be dev.id */ }}>Feature</button>
+              {dev.ide} <button onClick={() => { /* in here set the featured id to be dev.id */ }}>Feature</button>
             </div>
           )
         }
